@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=h yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap" %>
+  <%= javascript_include_tag "bootstrap.min" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<header>
+	<ul class="breadcrumb">
+		<li><a href="#">Home </a> <span class="divider">/</span></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="divider">/</span></li>
+		<% @categories = Category.all %>
+		<% @categories.each do |category| %>
+		<li><%= link_to category.name, category %><span class="divider">/</span></li>
+		<% end %>
+  </ul>
+  	<div class="hero-unit" id="mainHeader">
+  		<div  align = "center">
+        	<h1><%=h yield(:title)  %></h1><br></br>
+            <img src="http://lorempixel.com/1170/300/abstract"  height="4000" width="600" ></img>
+        	<br>
+            <%=h yield(:description) %>	
+</header>
+
+
+<div class="container">
+<%= yield %>
+<div>
+
+</body>
+</html>
+
