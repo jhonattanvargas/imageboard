@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
   # GET /admins
   # GET /admins.json
+  before_filter :authenticate_mod!
   def index
     @admins = Admin.all
 

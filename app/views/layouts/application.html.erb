@@ -21,19 +21,60 @@
 		<li><%= link_to category.name, category %><span class="divider">/</span></li>
 		<% end %>
   </ul>
-  	<div class="hero-unit" id="mainHeader">
-  		<div  align = "center">
-        	<h1><%=h yield(:title)  %></h1><br></br>
-            <img src="http://lorempixel.com/1170/300/abstract"  height="4000" width="600" ></img>
-        	<br>
-            <%=h yield(:description) %>	
-</header>
+  <divid="mod_nav">
+  <% if mod_signed_in? %>
+    Signed in as <%= current_mod.email %>. Not you?
+  <%= link_to "Sign out", destroy_mod_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_mod_registration_path %> or
+    <%= link_to "Sign in", new_mod_session_path %>
+  <% end %>
+</div>
+    
+      <div  align = "center">
+          <h1><%=h yield(:title)  %></h1><br></br>
+            <img src="http://lorempixel.com/1170/300/abstract"  height="4000" width="500" ></img>
+          <br>
+            <%=h yield(:description) %> 
+      </header></div>
+
+    </div>
 
 
+      <div id="push"></div>
+    </div>
 <div class="container">
 <%= yield %>
-<div>
+</div>
 
+<style type="text/css">
+
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+ </style>
+
+       <div id="push"></div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+      </div>
+    </div>
 </body>
 </html>
 
